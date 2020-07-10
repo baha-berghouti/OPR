@@ -1,0 +1,150 @@
+
+#logo{
+    width: 70px;
+    height: 50px;
+}
+.navbar{
+    background-color:rgb(194, 0, 0);    
+}
+
+.navbar-text{
+    font-family:lora,serif ;
+    text-shadow: 2px 2px 2px black;
+    
+}
+.navbar-dark .navbar-nav .nav-link {
+    color:  white; 
+}
+.navbar-dark .navbar-text {
+    color: rgb(255, 244, 94); 
+}
+.navbar-dark .navbar-nav .active>.nav-link {
+    color: rgb(255, 244, 94); 
+}
+
+ #collapse a {
+    text-shadow: 1px 1px 1px black;
+    margin-right: 10px;
+    text-align: center;
+    
+}
+
+body {
+    padding: 50px 0px 0px 0px;
+    z-index: 0; }
+.jumbotron{
+    background-color: rgb(255, 244, 94); 
+}  
+.jumbotron h1 {
+    font-family: Yellowtail;
+    text-shadow:1px 1px 1px rgb(194, 0, 0);
+}  
+
+.jumbotron img {
+    height:150px;
+}
+.jumbotron .btn {
+    background-color:rgb(194, 0, 0);
+    color: white;
+}
+.modal-header {
+    background-color:rgb(194, 0, 0);
+    color: white;
+}
+.modal-header button {
+    color: white;
+}
+.modal-header button:hover {
+    color: rgb(255, 244, 94);
+}
+
+.row-header {
+    margin: 0px auto;
+    padding: 0px 0px; 
+}
+.carousel{
+    box-shadow: 2PX 2px 2PX 2px rgb(54, 0, 0);
+    margin-bottom: 30px;
+}
+#carouselButton {
+    right: 0px;
+    position: absolute;
+    bottom: 0px;
+    z-index: 1; }
+
+#menu-tile {
+    position: relative;
+    height: 300px;
+    background-image: url("../img/pic2.jpg");
+    border: 2px solid rgb(104, 0, 0);
+    box-shadow: black 1px 1px 1px;
+}
+#map-tile{
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    width: 100%;
+    border: 2px solid rgb(104, 0, 0);
+    box-shadow: black 1px 1px 1px;
+}
+
+#hometiles span{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: white;
+    background-color: black;
+    opacity: 80%;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-size: 1.9em;
+}
+.footer{
+    padding-top: 40px;
+    color: white;
+    background-color:rgb(104, 0, 0) ;
+    margin-top: 30px;
+}
+
+.fa:hover{
+    opacity: 0.7;
+}
+#numberofitems{
+    height: 32px;
+    
+}
+#menu-list {
+    margin-top: 50px;
+}
+#menu-list img {
+    width: 80px;
+    height: 80px;
+}
+
+@media (max-width:405px){
+    .navbar-brand{
+        font-size: 3vw;
+    }
+    #logo{
+        width: 35px ;
+        height: 25px;
+    }
+
+}
+
+@media (max-width:575px){
+    .navbar-collapse{
+        margin-left: 40% ;    
+    }
+}
+
+
+
+
+
+
+
+
+     
+
