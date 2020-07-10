@@ -75,7 +75,7 @@ body {
 #menu-tile {
     position: relative;
     height: 300px;
-    background-image: url("../img/pic2.jpg");
+    background-image: url("img/pic2.jpg");
     border: 2px solid rgb(104, 0, 0);
     box-shadow: black 1px 1px 1px;
 }
