@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
-    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    <title>Pirates Food</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="bootstrap-social.css">
+        <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <title>Pirates Food</title>
+    </head>
 </head>
 <body>
     <nav class="navbar navbar-dark navbar-expand-sm fixed-top ">
@@ -18,7 +20,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.html">
                       <img src="img/logo.png" id="logo" alt="restorant logo">
                       <span class="navbar-text"><strong> PIRATES FOOD</strong></span>
                 </a>
@@ -34,54 +36,21 @@
             </div>
         </div>
     </nav>
-    <div class="container" id="menu-list">
-        <div class="row">
-            <div class="col-6">
-                <H2>Our Pizza Menu</H2>
-                <div>
-                    <ul class="list-unstyled">
-                        <li class="media">
-                          <img src="img/Pizza.jpg"  class="mr-3 image-thumbnail" alt="...">
-                          <div class="media-body">
-                            <h5 class="mt-0 mb-1">Pizza Margrerite <span class="badge badge-pill badge-secondary">600 Da</span></h5>
-                          </div>
-                        </li>
-                        <li class="media my-4">
-                          <img src="img/Pizza.jpg" class="mr-3" alt="...">
-                          <div class="media-body">
-                            <h5 class="mt-0 mb-1">Pizza 4 fromage <span class="badge badge-pill badge-secondary">600 Da</span></h5>
-                          </div>
-                        </li>
-                        <li class="media my-4">
-                          <img src="img/Pizza.jpg" class="mr-3" alt="...">
-                          <div class="media-body">
-                            <h5 class="mt-0 mb-1">Pizza Mergaz <span class="badge badge-pill badge-secondary">600 Da</span></h5>
-                          </div>
-                        </li>
-                        <li class="media my-4">
-                            <img src="img/Pizza.jpg"  class="mr-3 image-thumbnail" alt="...">
-                            <div class="media-body">
-                              <h5 class="mt-0 mb-1">Pizza Margrerite <span class="badge badge-pill badge-secondary">600 Da</span></h5>
-                            </div>
-                          </li>
-                          <li class="media my-4">
-                            <img src="img/Pizza.jpg" class="mr-3" alt="...">
-                            <div class="media-body">
-                              <h5 class="mt-0 mb-1">Pizza 4 fromage <span class="badge badge-pill badge-secondary">600 Da</span></h5>
-                            </div>
-                          </li>
-                          <li class="media">
-                            <img src="img/Pizza.jpg" class="mr-3" alt="...">
-                            <div class="media-body">
-                              <h5 class="mt-0 mb-1">Pizza Mergaz <span class="badge badge-pill badge-secondary">600 Da</span></h5>
-                            </div>
-                          </li>
-                    </ul>
-                </div>
-                
-            </div>
-        </div>       
-    </div>
+<div class="container">
+  <div class="page-header mt-5">
+    <h1 align="center"><strong>OUR MENU</strong> </h1>
+  </div>
+<ul class="nav nav-tabs">
+  <li class="nav-item " id="menulist_tab">
+    <a class="nav-link active" href="#">MENU LIST</a>
+  </li>
+  <li class="nav-item" id="types_tab">
+    <a class="nav-link" href="#">TYPES</a>
+  </li>
+</ul>
+<div class="mt-5" id="content"></div>
+</div>
+
     <footer class="footer">
         <div class="container">
             <div class="row">
@@ -111,3 +80,92 @@
     </footer>
     
 </body>
+<script src="jquery.slim.min.js"></script>
+<script src="popper.min.js"></script>
+<script src="bootstrap.min.js"></script>
+
+<script src="handlebars-v3.0.3.js"></script>
+<script src="data.js"></script>
+<script src="script.js"></script>
+
+
+
+<!-- OUR TEMPLATE -->
+<!-- categories template  -->
+<script type="text/x-handlebars-template" id="categories_template">
+  
+    <div class="row mt-5">
+      {{#each categories}}
+      <div class="col-sm-12 col-md-4 categories" data-id="{{@index}}" >
+        <img width="300px" height="250px" src="{{outerpic}}">
+        <h2>{{name}} / <span style="font-size: 0.5em;">{{pictures.length}} Types</span> </h2>
+      </div>
+      {{/each}}
+    </div>
+  
+</script>
+
+<!-- categories items template  -->
+
+<script type="text/x-handlebars-template"  id="photos_template">
+    <div class="row align-items-center mt-3 ">
+      <ul class="unstyled-list col-sm-12 col-md-6">
+        {{#each pictures}}
+        <li  class="media photos" >
+          <img  width="150px" height="150px"src="{{src}}" data-id="{{@index}}" class="mr-3 mb-3 image-thumbnail" alt="...">
+          <div class="media-body">
+            <h4 class="mt-0 mb-1">{{name}} <span class="badge badge-pill badge-secondary">{{price}}</span></h4>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+      <div class="col-sm-12 col-md-6" id="slideshow"></div>
+    </div>
+</script>
+
+<script id="slideshow_template" type="text/x-handlebars-template">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+      </ol>
+
+
+     <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+
+        {{#each pictures}}
+          <div class="carousel-item {{#if @first}}active{{/if}}">
+           <img class="carousel-img"    src="{{src}}" alt=""/> 
+          <div class="carousel-caption">
+            {{name}}
+          </div>
+        </div> <!-- / carousel item -->
+        {{/each}}
+        <a class="carousel-control-prev" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon"  aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="carousel-control-next-icon"  aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+  </div> <!-- / carousel --> 
+</script>
