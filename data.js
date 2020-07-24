@@ -43,7 +43,7 @@ var menu = {
       price:"600DA",
     },
     {
-      src:"img/tacoskebda.jpg",
+      src:"img/Tacoskebda.jpg",
       name:"Tacos kebda",
       price:"800DA",
     },
