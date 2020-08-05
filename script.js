@@ -126,7 +126,7 @@ $('#add').click(function(e){
 function deleteorder(){
   document.getElementById("form-row"+i).remove();
   food_Bill = food_Bill- foodBill ;
-  // $("#bill").html(food_Bill + pizza_bill +"DA");
+  $("#bill").html(food_Bill + pizza_bill +"DA");
     i=i-1;
     uncheck();
     x=x-1;
@@ -146,7 +146,7 @@ $('#pizzaorder').click(function(e){
 function deletepizzaorder(){
 document.getElementById("pizza-form"+j).remove();
 pizza_bill = pizza_bill- pizzaBill ;
-// $("#bill").html(food_Bill+pizza_bill +"DA");
+$("#bill").html(food_Bill+pizza_bill +"DA");
 j=j-1; 
 uncheck(); 
 x=x-1;
