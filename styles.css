@@ -124,11 +124,7 @@ body {
     height: 32px;
 }
 .add {
-    color: black;
-}
-.delete  {
-    color: rgb(194, 0, 0);
-}
+   color: rgb(194, 0, 0);}
 
 #menu-list {
     margin-top: 50px;
@@ -155,11 +151,26 @@ body {
 #menu-list img:hover{
     opacity: 80%;
     cursor: pointer;
+<<<<<<< HEAD
+=======
+}
+#searchbox{
+    width: 300px;
+    margin-left: 400px;
+>>>>>>> bc399bc8c46ebb05e32b5869b985cde8932216b0
 }
 #searchbox{
     width: 300px;
     margin-left: 400px;
 }
+
+.categories img{
+    border: solid 1px black;
+}
+.categories:hover {
+    opacity: 80%;
+}
+
 
 .categories img{
     border: solid 1px black;
