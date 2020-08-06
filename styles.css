@@ -57,6 +57,10 @@ body {
 .modal-header button:hover {
     color: rgb(255, 244, 94);
 }
+.orderButton {
+background-color:rgb(194, 0, 0);
+border-color:rgb(194, 0, 0);
+}
 
 .row-header {
     margin: 0px auto;
