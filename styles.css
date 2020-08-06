@@ -151,13 +151,10 @@ body {
 #menu-list img:hover{
     opacity: 80%;
     cursor: pointer;
-<<<<<<< HEAD
-=======
 }
 #searchbox{
     width: 300px;
     margin-left: 400px;
->>>>>>> bc399bc8c46ebb05e32b5869b985cde8932216b0
 }
 #searchbox{
     width: 300px;
