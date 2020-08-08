@@ -1,11 +1,8 @@
 
 // HOME PAGE SCRIPT 
-
 $('body').click(function(){
   $('#navbar').collapse('hide');
 });
-
-
 
 $(document).ready(function(){
       $("#carousel").carousel( { interval: 2000 } )
@@ -97,7 +94,7 @@ $(document).ready(function(){
 // funcionality of adding and removing orders 
 function check(){
   if($("#checkIcon"+(x-1)).html()!=""){
-    $("#checkIcon"+(x-1)).html()=""
+    $("#checkIcon"+(x-1)).html("");
   }
    document.querySelector("#checkIcon"+(x-1)).insertAdjacentHTML("afterbegin",'<svg id="check'+(x-1)+'" width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/></svg>'
    )
@@ -107,30 +104,38 @@ function check(){
       document.querySelector(".numberOf"+(x-1)).disabled=true;
   
 }
-function uncheck(){
-      $("#check"+(x-1)).remove();
-      document.querySelector(".size"+(x-1)).disabled=false;
-      document.querySelector(".select"+(x-1)).disabled=false;
-      document.querySelector(".numberOf"+(x-1)).disabled=false;
-}
+// function uncheck(){
+//       $("#check"+(x-1)).remove();
+//       document.querySelector(".size"+(x-1)).disabled=false;
+//       document.querySelector(".select"+(x-1)).disabled=false;
+//       document.querySelector(".numberOf"+(x-1)).disabled=false;
+// }
 
 $('#add').click(function(e){ 
   i=i+1; 
   x=x+1;
     e.preventDefault();
     document.querySelector("#order").insertAdjacentHTML("beforeend",
-    '<div class="form-row order" id="form-row'+i+'"><div class="form-group col-4"><select onchange="resetTheBill(); takeFoodValues(); setValues (); " id="foodSelect'+i+'" class="form-control form-control-sm select'+x+'"><option value="500">Tacos</option><option value="300">Fajitas</option><option value="300">Melfouf</option><option value="250">Hamburger</option></select></div><div class="form-group col-2"> <input  min="1" value="1" type="number" onchange="resetTheBill(); takeFoodValues(); setValues(); " class="form-control numberOf'+x+'" id="numberofitems'+i+'" style="height:32px;"></div><div class="form-group col-4"><select id="size'+i+'" id="mySelect" onchange="resetTheBill(); takeFoodValues(); setValues (); " class="form-control form-control-sm size'+x+'"><option  value="1">S</option><option value="1.2">M</option><option value="1.3">L</option><option value="1.4">XL</option><option value="1.7">XXL</option></select></div><div id="checkIcon'+x+'"></div><button type="button"  class="close mb-4"  onclick="deleteorder()" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'
+    '<div class="form-row order" id="form-row'+i+'"><div class="form-group col-4"><select onchange="resetTheBill(); takeFoodValues(); setValues (); " id="foodSelect'+i+'" class="form-control form-control-sm select'+x+'"><option value="500">Tacos</option><option value="300">Fajitas</option><option value="300">Melfouf</option><option value="250">Hamburger</option></select></div><div class="form-group col-2"> <input  min="1" value="1" type="number" onchange="resetTheBill(); takeFoodValues(); setValues(); " class="form-control numberOf'+x+'" id="numberofitems'+i+'" style="height:32px;"></div><div class="form-group col-4"><select id="size'+i+'" id="mySelect" onchange="resetTheBill(); takeFoodValues(); setValues (); " class="form-control form-control-sm size'+x+'"><option  value="1">S</option><option value="1.2">M</option><option value="1.3">L</option><option value="1.4">XL</option><option value="1.7">XXL</option></select></div><div id="checkIcon'+x+'"></div><button  type="button"  class="close mb-4" onclick="deleteorder(this.id)" aria-label="Close"><span id="deletebutton'+i+'" aria-hidden="true">&times;</span></button></div>'
     )  
   takeFoodValues(); 
   setValues();
   check();
 });    
-function deleteorder(){
-  document.getElementById("form-row"+i).remove();
-  food_Bill = food_Bill- foodBill ;
+function deleteorder(e){
+  e=e ||  window.event;
+  e = e.target || e.srcElement ; 
+  var id= e.id; 
+  var idNumber = id.match(/\d+/g);
+  var k = parseInt(idNumber[0]);
+  var deletedFoodValue = $("#foodSelect"+k).val() ;
+  var numberofdeleteditems = $("#numberofitems"+k).val() ;
+  var deletedsize =$("#size"+k).val();
+  var Deleted_food = deletedFoodValue*numberofdeleteditems*deletedsize;
+  food_Bill = food_Bill- Deleted_food;
+  document.getElementById("form-row"+k).remove();
   $("#bill").html(food_Bill + pizza_bill +"DA");
     i=i-1;
-    uncheck();
     x=x-1;
   };
 
@@ -139,18 +144,26 @@ $('#pizzaorder').click(function(e){
   x=x+1;
   e.preventDefault();
   document.querySelector("#order").insertAdjacentHTML("beforeend",
-   '<div class="form-row"  id="pizza-form'+j+'"><div class="form-group col-4"><select onchange="resetThePizzaBill(); takePizzaValues(); setPizzaValues ();" id ="pizzaSelect'+j+'" class="form-control form-control-sm select'+x+'"><option value="500">Pizza Poulet</option><option value="800">Pizza 4 Fromage</option><option value="600">Pizza Mergaz</option><option value="800">Pizza Margeritte</option></select></div><div class="form-group col-2"> <input  min="1" value="1" style=" height: 32px;" onchange="resetThePizzaBill(); takePizzaValues(); setPizzaValues ();" id ="numberOfPizza'+j+'"  type="number" class="form-control numberOf'+x+'"></div><div class="form-group col-4"><select id="Psize'+j+'" onchange="resetThePizzaBill(); takePizzaValues(); setPizzaValues ();" class="form-control form-control-sm size'+x+'"><option value="1">Small</option><option value="1.5">Medium</option><option value="2">Mega</option></select></div><div id="checkIcon'+x+'"></div><button type="button"  class="close mb-4"  onclick="deletepizzaorder()" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'
+   '<div class="form-row"  id="pizza-form'+j+'"><div class="form-group col-4"><select onchange="resetThePizzaBill(); takePizzaValues(); setPizzaValues ();" id ="pizzaSelect'+j+'" class="form-control form-control-sm select'+x+'"><option value="500">Pizza Poulet</option><option value="800">Pizza 4 Fromage</option><option value="600">Pizza Mergaz</option><option value="800">Pizza Margeritte</option></select></div><div class="form-group col-2"> <input  min="1" value="1" style=" height: 32px;" onchange="resetThePizzaBill(); takePizzaValues(); setPizzaValues ();" id ="numberOfPizza'+j+'"  type="number" class="form-control numberOf'+x+'"></div><div class="form-group col-4"><select id="Psize'+j+'" onchange="resetThePizzaBill(); takePizzaValues(); setPizzaValues ();" class="form-control form-control-sm size'+x+'"><option value="1">Small</option><option value="1.5">Medium</option><option value="2">Mega</option></select></div><div id="checkIcon'+x+'"></div><button type="button"  class="close mb-4"  onclick="deletepizzaorder(this.id)" aria-label="Close"><span id="deletebutton'+j+'" aria-hidden="true">&times;</span></button></div>'
 )
   takePizzaValues();
   setPizzaValues(); 
   check();    
 });
-function deletepizzaorder(){
-document.getElementById("pizza-form"+j).remove();
-pizza_bill = pizza_bill- pizzaBill ;
+function deletepizzaorder(e){
+  e=e ||  window.event;
+  e = e.target || e.srcElement ; 
+  var id= e.id; 
+  var idNumber = id.match(/\d+/g);
+  var l = parseInt(idNumber[0]);
+  var  deletedPizzaValue = $("#pizzaSelect"+l).val() ;
+  var deletednumberOfPizza = $("#numberOfPizza"+l).val() ;
+  var deletedPsize =$("#Psize"+l).val();
+  deletedpizzaBill = deletedPizzaValue*deletednumberOfPizza*deletedPsize;
+  pizza_bill = pizza_bill- deletedpizzaBill ;
+document.getElementById("pizza-form"+l).remove();
 $("#bill").html(food_Bill+pizza_bill +"DA");
 j=j-1; 
-uncheck(); 
 x=x-1;
 
 };
@@ -167,6 +180,8 @@ x=x-1;
      );}
   })
   //END OF HOME PAGE SCRIPT 
+
+
   // MENU PAGE SCRIPT 
 
 
